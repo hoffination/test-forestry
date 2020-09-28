@@ -27,6 +27,7 @@ export default function BlogList() {
                     <h2>{blog.node.frontmatter.title}</h2>
                     <h3>{blog.node.frontmatter.date}</h3>
                     <p>{blog.node.excerpt}</p>
+                    {/* <p>{blog.node.fields.slug}</p> */}
                   </div>
                 </li>
               </Link>

@@ -10,11 +10,10 @@ module.exports = {
     about: config.about,
     contact: config.contact,
     primaryColor: config.primary_color,
-    infoData: infoData
+    infoData: infoData,
   },
   plugins: [
     "gatsby-plugin-sass",
-    "gatsby-transformer-remark",
     "gatsby-plugin-react-helmet",
     "gatsby-transformer-yaml",
     {
@@ -28,8 +27,8 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "posts",
-        path: `${__dirname}/content/posts`
-      }
+        path: `${__dirname}/content/posts`,
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
@@ -45,17 +44,14 @@ module.exports = {
         path: `${__dirname}/content/images`,
       },
     },
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    "gatsby-remark-images",
     {
-      resolve: "gatsby-plugin-sharp", 
+      resolve: "gatsby-plugin-mdx",
       options: {
-        defaultQuality: 75
-      }
-    },
-    `gatsby-transformer-sharp`,
-    {
-      resolve: "gatsby-transformer-remark",
-      options: {
-        plugins: [
+        extensions: [`.md`, `.mdx`],
+        gatsbyRemarkPlugins: [
           "gatsby-remark-relative-images",
           "gatsby-remark-normalize-paths",
           {
@@ -65,7 +61,7 @@ module.exports = {
               linkImagesToOriginal: false,
             },
           },
-        ],
+        ]
       },
     },
   ],
